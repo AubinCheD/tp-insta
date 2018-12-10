@@ -1,0 +1,36 @@
+html{
+	height : 100%;
+}
+
+body{
+	height : 100%;
+	background-image : url("../images/background-2.jpg");
+	background-repeat : no-repeat;
+	background-size : cover;
+}
+
+.brand-logo{
+	margin-left : 5%;
+}
+
+.nav-wrapper{
+	background : #6a1b9a;
+}
+
+h1{
+	color : white;
+	position : absolute;
+	top : 18%;
+	left : 60%;
+	font-size : 6vw;
+	font-weight : bold;
+}
+
+button{
+	width : 12vw;
+	min-width : 85px;
+	position : absolute;
+	top : 48vh;
+	left : 71vw;
+	background : #e95950;
+}
