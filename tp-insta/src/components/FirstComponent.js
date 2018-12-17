@@ -15,9 +15,7 @@ class FirstComponent extends Component {
 	const {title} = this.props;
     return (
       <div>
-			<h1>{title}</h1>
-			<p>Lorem Baudhuipsum</p>
-			<img src={this.state.img} onMouseOver={this.mouseOver} onMouseOut={this.mouseOut} alt="image" />
+		
       </div>
     );
   }

@@ -42,12 +42,15 @@ h2{
 	top : 10vh;
 }
 
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.slideshow{
+	height : 100vh;
+	width : 100vw;
 }
+
+.slide{
+	height : 100vh;
+	width : 100vw;
+}
+
+
+

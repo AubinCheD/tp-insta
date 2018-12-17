@@ -74,7 +74,7 @@ class Slideshow extends Component {
           onExited={this.onExited}
           key={item.src}
         >
-          <img src={item.src} alt={item.altText} />
+          <img src={item.src} alt={item.altText} className="slide" />
           <CarouselCaption captionText={item.caption} captionHeader={item.caption} />
         </CarouselItem>
       );
@@ -82,6 +82,7 @@ class Slideshow extends Component {
 
     return (
       <Carousel
+        className="slideshow"
         activeIndex={activeIndex}
         next={this.next}
         previous={this.previous}
