@@ -1,4 +1,4 @@
-const Mid = ({req, res, func} => {
+const Mid = ({req, res, func}, () => {
 	console.log(Mid);
 	next();
 });

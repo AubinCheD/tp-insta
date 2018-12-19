@@ -4,7 +4,7 @@
   "description": "TP web JS Chedotal Signarbieux",
   "main": "app.js",
   "scripts": {
-	"start": "node_modules/.bin/nodemon app.js --exec babel-node --",
+    "start": "node_modules/.bin/nodemon app.js --exec babel-node --",
     "test": "test"
   },
   "repository": {
@@ -27,7 +27,8 @@
   },
   "homepage": "https://github.com/AubinCheD/tp-insta#readme",
   "dependencies": {
-    "express": "^4.16.4"
+    "express": "^4.16.4",
+    "mongoose": "^5.4.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
