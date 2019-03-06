@@ -8,48 +8,6 @@ body, #root{
 
 #app{
 	height : 100%;
-	background : rgba(0, 10, 0, 0.7);
-}
-
-h1{
-	position : absolute;
-	left : 24vw;
-	top : 15vh;
-	font-size : 7.25em;
-	color : white;
-}
-
-h2{
-	position : absolute;
-	left : 27vw;
-	top : 24vh;
-	font-size : 5.75em;
-	color : white;
-}
-
-#formContainer{
-	position : absolute;
-	width : 350px;
-	color : white;
-	padding-left : 20px;
-	padding-right : 25px;
-	padding-top : 10px;
-	padding-bottom : 10px;
-	border : 1px solid black;
-	border-radius : 8px;
-	background-color : rgba(0, 0, 0, 0.5);
-	left : 70vw;
-	top : 10vh;
-}
-
-.slideshow{
-	height : 100vh;
-	width : 100vw;
-}
-
-.slide{
-	height : 100vh;
-	width : 100vw;
 }
 
 

@@ -2,12 +2,19 @@
 
 import React, { Component } from 'react';
 import AppRouter from './AppRouter.js';
+import MyNav from './components/myNav';
+import { BrowserRouter as Router } from "react-router-dom";
 
 
 class App extends Component {
   render() {
     return (
-		<AppRouter></AppRouter>
+        <Router>
+            <div>
+                <MyNav></MyNav>
+                <AppRouter></AppRouter>
+            </div>
+        </Router>
     );
   }
 }

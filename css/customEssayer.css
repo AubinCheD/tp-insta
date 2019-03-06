@@ -1,0 +1,53 @@
+html{
+	height : 100%;
+}
+
+body{
+	height : 100%;
+}
+
+.brand-logo{
+	margin-left : 5%;
+}
+
+.brand-logo:hover, li a:hover{
+	text-decoration : none;
+	color : white;
+}
+
+.nav-wrapper{
+	background : #6a1b9a;
+	font-family : sans-serif;
+	z-index : 1;
+}
+
+#wrapper{
+	position : absolute;
+	top : 0;
+	width : 100%;
+}
+
+#overlay-1{
+	z-index : 1;
+}
+
+.btn{
+	background : #6a1b9a;
+	height : 100%;
+}
+
+.apple-store, .google-play{
+	transition: background 0.4s ease-in-out;
+}
+
+.apple-store:hover{
+	background : #31aae2;
+}
+
+.google-play:hover{
+	background : #c183d6;
+}
+
+p, h6{
+	font-family : Arial;
+}

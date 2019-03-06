@@ -2,21 +2,17 @@ import React from 'react';
 import { Button, FormGroup, Label, Input } from 'reactstrap';
 import axios from 'axios';
 import './appform.css';
-import Slideshow from './slideshow.js';
 import '../App.css';
 import { withRouter } from 'react-router-dom'
 
-/** TO DO :
- * 
- * Check informations' validity
- * 
- */
+
+
 class AppForm extends React.Component {
 	
 	constructor(props){
 		super(props);
 		
-		this.state = {prenom: '', nom: '', email: '', password: '', homme: true, femme: false, CGU: false};
+		this.state = {prenom: '', nom: '', email: '', password: '', homme: true, femme: false, CGU: false, loginEmail: '', loginPassword: ''};
 		
 		this.handleChangePrenom = this.handleChangePrenom.bind(this);
 		this.handleChangeNom = this.handleChangeNom.bind(this);
@@ -26,6 +22,9 @@ class AppForm extends React.Component {
 		this.handleChangeFemme = this.handleChangeFemme.bind(this);
 		this.handleChangeCGU = this.handleChangeCGU.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
+		this.handleChangeLoginEmail = this.handleChangeLoginEmail.bind(this);
+		this.handleChangeLoginPassword = this.handleChangeLoginPassword.bind(this);
+		this.handleLogin = this.handleLogin.bind(this);
 	
 	}	
 			
@@ -53,12 +52,14 @@ class AppForm extends React.Component {
 						email: this.state.email,
 						password: this.state.password,
 					}).then(function(response) {
-						if(response.status === 200){ //https://medium.com/@rajaraodv/securing-react-redux-apps-with-jwt-tokens-fcfe81356ea0
-							console.log("User logged in with success");
-							sessionStorage.setItem("jwtToken", response.data.token);
-							this.props.history.push("/home");
-						}
+						if(response.status === 200) { //https://medium.com/@rajaraodv/securing-react-redux-apps-with-jwt-tokens-fcfe81356ea0
+                            console.log("User logged in with success");
+                            sessionStorage.setItem("jwtToken", response.data.token);
+                            sessionStorage.setItem("email", this.state.email);
+                            this.props.history.push("/home");
+                        }
 					}.bind(this), function(error){
+						alert("Cette adresse email est déjà utilisée");
 						console.log(error);
 					});
 				}
@@ -70,6 +71,30 @@ class AppForm extends React.Component {
 			alert("Non valid form !");
 		}
 
+	}
+
+	handleLogin(event){
+
+        event.preventDefault();
+
+        if(this.state.loginEmail !== '' && this.state.loginPassword !== '' && this.state.loginPassword.length >=6){
+            axios.post('https://isigram.glitch.me/login', {
+                email: this.state.loginEmail,
+                password: this.state.loginPassword,
+            }).then(function(response) {
+                if(response.status === 200){ //https://medium.com/@rajaraodv/securing-react-redux-apps-with-jwt-tokens-fcfe81356ea0
+                    console.log("User logged in with success");
+                    sessionStorage.setItem("jwtToken", response.data.token);
+                    sessionStorage.setItem("email", this.state.loginEmail);
+                    this.props.history.push("/home");
+                }
+            }.bind(this), function(error){
+                console.log(error);
+                alert("login ou mot de passe incorrect");
+            });
+		}else{
+        	alert("non valid form");
+		}
 	}
 	
 	handleChangePrenom(event){
@@ -101,17 +126,37 @@ class AppForm extends React.Component {
 	handleChangeCGU(event){
 		this.setState({CGU: event.target.value});
 	}
+
+	handleChangeLoginEmail(event){
+		this.setState({loginEmail: event.target.value});
+	}
+
+	handleChangeLoginPassword(event){
+		this.setState({loginPassword: event.target.value});
+	}
 	
   render() {
 	  
     return (
     
 		  <div id="app">
-			<Slideshow className="slideshow"/>
-			<h1>Isigram</h1>
-			
-			<div id="formContainer">
-			  <form onSubmit={this.handleSubmit}>
+			  <h2>Log in</h2>
+			<div id="formsContainer">
+                <form onSubmit={this.handleLogin} id="loginForm">
+                    <FormGroup>
+                        <Label for="loginEmail">Email</Label>
+                        <Input type="email" name="loginEmail" value={this.state.loginEmail} onChange={this.handleChangeLoginEmail} id="loginEmail" placeholder="Entrez votre adresse email" />
+                    </FormGroup>
+                    <FormGroup>
+                        <Label for="loginPassword">Password</Label>
+                        <Input type="password" name="loginPassword" value={this.state.loginPassword} onChange={this.handleChangeLoginPassword} id="password" placeholder="Entrez votre mot de passe" />
+                    </FormGroup>
+
+                    <Button>Log in</Button>
+                </form>
+
+				<h2>Sign up</h2>
+			  <form onSubmit={this.handleSubmit} id="signupForm">
 				<FormGroup>
 				  <Label for="prenom">Prénom</Label>
 				  <Input type="text" value={this.state.prenom} onChange={this.handleChangePrenom} name="prenom" id="prenom" placeholder="Entrez votre prénom" />
@@ -126,7 +171,7 @@ class AppForm extends React.Component {
 				</FormGroup>
 				<FormGroup>
 				  <Label for="password">Password</Label>
-				  <Input type="password" name="password" value={this.state.password} onChange={this.handleChangePassword} d="password" placeholder="Choisissez votre mot de passe" />
+				  <Input type="password" name="password" value={this.state.password} onChange={this.handleChangePassword} id="password" placeholder="Choisissez votre mot de passe" />
 				</FormGroup>
 				<FormGroup tag="fieldset">
 				  <legend>Sexe</legend>
@@ -142,7 +187,7 @@ class AppForm extends React.Component {
 				  </FormGroup>
 				</FormGroup>
 				<FormGroup check>
-				  <Label check>
+				  <Label check id="cb" >
 					<Input type="checkbox" value={this.state.CGU} checked={this.state.CGU} onChange={this.handleChangeCGU} />{' '}
 					Accepter les CGU Isigram
 				  </Label>
