@@ -127,7 +127,7 @@ class Home extends React.Component {
 	
 	render() {
 		return (
-		  <div>
+		  <div id="home">
 			  <div id="newPostContainer">
 				  <h2>Post new image</h2>
                   <ImageUploader style={{width: "10vw", display: "inline-block"}}

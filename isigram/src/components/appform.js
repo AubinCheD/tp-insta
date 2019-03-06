@@ -139,7 +139,7 @@ class AppForm extends React.Component {
 	  
     return (
     
-		  <div id="app">
+		  <div id="appform">
 			  <h2>Log in</h2>
 			<div id="formsContainer">
                 <form onSubmit={this.handleLogin} id="loginForm">
@@ -176,11 +176,11 @@ class AppForm extends React.Component {
 				<FormGroup tag="fieldset">
 				  <legend>Sexe</legend>
 				  <FormGroup check>
-					 <input type="radio" name="homme" 
+					 <input type="radio" name="homme" id="homme"
 						   value={this.state.homme}
 						   checked={this.state.femme === false}
 						   onChange={this.handleChangeHomme} />Homme
-					 <input type="radio" name="femme" 
+					 <input type="radio" name="femme"  id="femme"
 						   value={this.state.femme}  
 						   checked={this.state.homme === false}
 						   onChange={this.handleChangeFemme} />Femme

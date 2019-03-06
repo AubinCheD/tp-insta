@@ -12,7 +12,7 @@
     vertical-align: top;
 }
 
-#newFollowContainer form{
+#home #newFollowContainer form{
     width:20vw;
     padding: 0px;
 }
@@ -36,14 +36,14 @@
     background-color : rgba(0, 0, 200, 0.5);
 }
 
-h2{
+home h2{
     color: white;
     font-size: 2em;
     margin-top: 0px;
     margin-bottom: 5vh;
 }
 
-form{
+#home form{
     margin-top: 5vh;
     width: 40vw;
     background: none;
