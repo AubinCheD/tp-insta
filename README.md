@@ -26,3 +26,7 @@ Afin de faciliter le test de notre application, voici des comptes utilisateurs d
 jean.dupont@isimail.com - jeandupont  
 marie.martin@isimail.com - mariemartin  
 michel.olivier@isimail.com - michelolivier
+
+## Remarques
+
+Parfois, la publication d'une photo met quelques secondes à s'effectuer après avoir appuyé sur le bouton, surtout si elle est lourde.
