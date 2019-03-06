@@ -100,7 +100,7 @@ route.get("/getUserId", (req, res) => {
 route.get("/posts", (req, res) => {
     console.log("GET /POSTS");
     service
-        .getByUser(req.query.idUser, req.query.page || 1, req.query.per_page || 10)
+        .getAll()
         .then(route => res.status(200).json({ route }));
 });
 

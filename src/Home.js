@@ -23,6 +23,8 @@ class Home extends React.Component {
             this.onDrop = this.onDrop.bind(this);
             this.handleAddFollow = this.handleAddFollow.bind(this);
             this.handleChangeFollow = this.handleChangeFollow.bind(this);
+            this.handleFollowed = this.handleFollowed.bind(this);
+            this.handleSeeAll = this.handleSeeAll.bind(this);
 
             this.getData();
 
@@ -123,6 +125,41 @@ class Home extends React.Component {
 
 	}
 
+	handleSeeAll(){
+        let config = {
+            headers: {'Authorization': sessionStorage.getItem("jwtToken")}
+        };
+
+        axios.get("https://isigram.glitch.me/posts", config)
+            .then(responsePosts => {
+                console.log(responsePosts.data.route);
+                this.setState({posts: responsePosts.data.route})
+            }).catch(function(error){
+            console.log(error);
+        });
+
+        document.getElementById("postsTitleAll").style.color = "#424242";
+        document.getElementById("postsTitleSuivis").style.color = "white";
+	}
+
+	handleFollowed(){
+        let config = {
+            headers: {'Authorization': sessionStorage.getItem("jwtToken")}
+        };
+
+        axios.get("https://isigram.glitch.me/friendsPosts?idUser=" + sessionStorage.getItem("id"), config)
+            .then(responsePosts => {
+                console.log(responsePosts.data.route);
+                this.setState({posts: responsePosts.data.route})
+            }).catch(function(error){
+            console.log(error);
+        });
+
+        document.getElementById("postsTitleSuivis").style.color = "#424242";
+        document.getElementById("postsTitleAll").style.color = "white";
+	}
+
+
     onDrop(picture) {
         this.setState({
             picture: [].concat(picture),
@@ -171,7 +208,7 @@ class Home extends React.Component {
 			  </div>
 
 			  <div id="postsContainer">
-				  <h2>Flux</h2>
+				  <div className="postsTitles" id={"postsTitleSuivis"} style={{color: "#424242"}} onClick={this.handleFollowed}><h2>Suivis</h2></div><div className="postsTitles" id={"postsTitleAll"} onClick={this.handleSeeAll}><h2>Tout</h2></div>
 				  { this.state.posts.map(post => <Post key={post} image={post.photo} idUser={post.idUser} subtitle={post.description} idPost={post._id}></Post>) }
 			  </div>
 

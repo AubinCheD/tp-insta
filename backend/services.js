@@ -77,6 +77,12 @@ export async function getByUser(idUser, page, per_page) {
     return result;
 };
 
+export async function getAll(idUser) {
+    let result = await Post.find({})
+
+    return result;
+};
+
 export async function getByFriends(idUser){
     let followed = await Follow.find({"idUser": idUser}).select('idFollowed -_id');
     var i, j;
@@ -89,7 +95,6 @@ export async function getByFriends(idUser){
             posts.push(currentPosts[j]);
         }
     }
-
 
     return posts;
 }

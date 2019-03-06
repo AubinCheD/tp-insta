@@ -70,3 +70,14 @@ home h2{
     max-height: 100%;
     background-color: white;
 }
+
+#postsContainer .postsTitles{
+    display: inline-block;
+    padding-left: 2vw;
+    padding-right: 2vw;
+    cursor: pointer;
+}
+
+#postsContainer h2:hover{
+    text-decoration: underline;
+}
