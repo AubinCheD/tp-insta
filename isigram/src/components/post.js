@@ -35,9 +35,10 @@ class Post extends React.Component {
                 .then(response => {
                     if (response.status === 200) {
                         console.log(response);
+                        window.location.reload();
                     }
                 }).catch(function (error) {
-                console.log(error);
+                     console.log(error);
             });
         } else {
             alert("Veuillez écrire un commentaire");

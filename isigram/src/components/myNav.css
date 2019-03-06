@@ -16,7 +16,6 @@ a{
 }
 
 #quit{
-    display: none;
     position: absolute;
     right: 3vw;
     top: 2vh;

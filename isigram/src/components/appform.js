@@ -25,19 +25,13 @@ class AppForm extends React.Component {
 		this.handleChangeLoginEmail = this.handleChangeLoginEmail.bind(this);
 		this.handleChangeLoginPassword = this.handleChangeLoginPassword.bind(this);
 		this.handleLogin = this.handleLogin.bind(this);
-
-        if(document.getElementById("quit") !== null) {
-            document.getElementById("quit").style.display = "none";
-        }
 	
 	}	
 			
 	handleSubmit(event) {
 		
 		event.preventDefault();
-		
-		//alert(this.state.prenom + ", " + this.state.nom + ", " + this.state.email + ", " + this.state.password + ", " + this.state.homme + ", " + this.state.femme + ", " + this.state.CGU);
-		
+
 		/** VALIDITY CHECK **/
 		if(this.state.prenom !== "" && this.state.nom !== "" && this.state.email !== "" && this.state.password !== "" && this.state.password.length >= 6 && (this.state.homme || this.state.femme) && this.state.CGU){
 		
@@ -56,7 +50,7 @@ class AppForm extends React.Component {
 						email: this.state.email,
 						password: this.state.password,
 					}).then(function(response) {
-						if(response.status === 200) { //https://medium.com/@rajaraodv/securing-react-redux-apps-with-jwt-tokens-fcfe81356ea0
+						if(response.status === 200) {
                             console.log("User logged in with success");
                             sessionStorage.setItem("jwtToken", response.data.token);
                             sessionStorage.setItem("email", this.state.email);
@@ -79,7 +73,6 @@ class AppForm extends React.Component {
 
 	handleLogin(event){
 
-		console.log("BAUDHUIT");
         event.preventDefault();
 
         if(this.state.loginEmail !== '' && this.state.loginPassword !== '' && this.state.loginPassword.length >=6){
@@ -87,7 +80,7 @@ class AppForm extends React.Component {
                 email: this.state.loginEmail,
                 password: this.state.loginPassword,
             }).then(function(response) {
-                if(response.status === 200){ //https://medium.com/@rajaraodv/securing-react-redux-apps-with-jwt-tokens-fcfe81356ea0
+                if(response.status === 200){
                     console.log("User logged in with success");
                     sessionStorage.setItem("jwtToken", response.data.token);
                     sessionStorage.setItem("email", this.state.loginEmail);
@@ -145,7 +138,7 @@ class AppForm extends React.Component {
     return (
     
 		  <div id="appform">
-			  <h2>Log in</h2>
+			  <h2>S'identifier</h2>
 			<div id="formsContainer">
                 <form onSubmit={this.handleLogin} id="loginForm">
                     <FormGroup>
@@ -153,14 +146,14 @@ class AppForm extends React.Component {
                         <Input type="email" name="loginEmail" value={this.state.loginEmail} onChange={this.handleChangeLoginEmail} id="loginEmail" placeholder="Entrez votre adresse email" />
                     </FormGroup>
                     <FormGroup>
-                        <Label for="loginPassword">Password</Label>
+                        <Label for="loginPassword">Mot de passe</Label>
                         <Input type="password" name="loginPassword" value={this.state.loginPassword} onChange={this.handleChangeLoginPassword} id="password" placeholder="Entrez votre mot de passe" />
                     </FormGroup>
 
                     <Button>Log in</Button>
                 </form>
 
-				<h2>Sign up</h2>
+				<h2>S'inscrire</h2>
 			  <form onSubmit={this.handleSubmit} id="signupForm">
 				<FormGroup>
 				  <Label for="prenom">Prénom</Label>
@@ -175,7 +168,7 @@ class AppForm extends React.Component {
 				  <Input type="email" name="email" value={this.state.email} onChange={this.handleChangeEmail} id="email" placeholder="Entrez votre adresse email" />
 				</FormGroup>
 				<FormGroup>
-				  <Label for="password">Password</Label>
+				  <Label for="password">Mot de passe</Label>
 				  <Input type="password" name="password" value={this.state.password} onChange={this.handleChangePassword} id="password" placeholder="Choisissez votre mot de passe" />
 				</FormGroup>
 				<FormGroup tag="fieldset">

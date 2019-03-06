@@ -15,10 +15,6 @@ class Home extends React.Component {
 
         this.state = {posts: [], picture: [], extension: '', date: 0, legend: '', imageIcon: imageIcon};
 
-        if(document.getElementById("quit") !== null) {
-            document.getElementById("quit").style.display = "inline-block";
-        }
-
         if(sessionStorage.getItem("jwtToken") !== null) {
 
             this.getData = this.getData.bind(this);
@@ -49,13 +45,15 @@ class Home extends React.Component {
 			idUser: sessionStorage.getItem("id"),
 			emailFollowed: this.state.follow
 		}, config)
-		.then( response => {
+		.then( function(response) {
 			if(response.status === 200){
 				console.log(response);
+                window.location.reload();
 			}
 		}).catch(function (error) {
+            alert("Cet utilisateur n'a pas été trouvé");
 			console.log(error);
-        })
+        });
 	}
 
 	handleChangeFollow(event){
@@ -91,6 +89,7 @@ class Home extends React.Component {
 					}, config)
 					.then(responsePost =>{
 						console.log(responsePost);
+                        window.location.reload();
 					}).catch(function (error) {
 						console.log(error);
                     })
