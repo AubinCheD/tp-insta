@@ -94,9 +94,9 @@ class Post extends React.Component {
                     { this.state.comments.map(comment => <div><h4>{comment.name}</h4><p key={comment}>{comment.text}</p></div>) }
                     <form onSubmit={this.handleAddComment} >
                         <FormGroup>
-                            <Input type="text" value={this.state.currentComment} onChange={this.handleChangeCurrentComment} name="currentComment" id="currentComment" placeholder="Enter comment" />
+                            <Input type="text" value={this.state.currentComment} onChange={this.handleChangeCurrentComment} name="currentComment" id="currentComment" placeholder="Écrire un commentaire" />
                         </FormGroup>
-                        <Button>Comment</Button>
+                        <Button>Commenter</Button>
                     </form>
                 </div>
             </div>

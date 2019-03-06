@@ -138,10 +138,10 @@ class Home extends React.Component {
 		return (
 		  <div id="home">
 			  <div id="newPostContainer">
-				  <h2>Post new image</h2>
+				  <h2>Poster une nouvelle image</h2>
                   <ImageUploader style={{width: "10vw", display: "inline-block"}}
                       withIcon={true}
-                      buttonText='Choose image'
+                      buttonText='Choisir une image'
                       onChange={this.onDrop}
                       imgExtension={['.jpg', '.gif', '.png', '.gif']}
                       maxFileSize={5242880}
@@ -152,26 +152,26 @@ class Home extends React.Component {
 				  </div>
                   <form onSubmit={this.handleSubmit} >
 					  <FormGroup>
-						  <Label for="legend">legend</Label>
-						  <Input type="textarea" value={this.state.legend} onChange={this.handleChangeLegend} name="legend" id="legend" placeholder="Legend" />
+						  <Label for="legend">Légende</Label>
+						  <Input type="textarea" value={this.state.legend} onChange={this.handleChangeLegend} name="legend" id="legend" placeholder="Légende" />
 					  </FormGroup>
-                      <Button>Post</Button>
+                      <Button>Poster</Button>
 				  </form>
 			  </div>
 
 			  <div id="newFollowContainer">
-				  <h2>Follow new isigramer</h2>
+				  <h2>Suivre un isigramer</h2>
 				  <form onSubmit={this.handleAddFollow} >
 					  <FormGroup>
 						  <Label for="follow">Email</Label>
-						  <Input type="text" value={this.state.follow} onChange={this.handleChangeFollow} name="follow" id="follow" placeholder="Enter email adress" />
+						  <Input type="text" value={this.state.follow} onChange={this.handleChangeFollow} name="follow" id="follow" placeholder="Entrez son adresse email" />
 					  </FormGroup>
-					  <Button>Follow</Button>
+					  <Button>Suivre</Button>
 				  </form>
 			  </div>
 
 			  <div id="postsContainer">
-				  <h2>Flow</h2>
+				  <h2>Flux</h2>
 				  { this.state.posts.map(post => <Post key={post} image={post.photo} idUser={post.idUser} subtitle={post.description} idPost={post._id}></Post>) }
 			  </div>
 
