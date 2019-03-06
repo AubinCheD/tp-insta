@@ -15,14 +15,24 @@ class Home extends React.Component {
 
         this.state = {posts: [], picture: [], extension: '', date: 0, legend: '', imageIcon: imageIcon};
 
-        this.getData= this.getData.bind(this);
-        this.handleChangeLegend = this.handleChangeLegend.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-        this.onDrop = this.onDrop.bind(this);
-        this.handleAddFollow = this.handleAddFollow.bind(this);
-        this.handleChangeFollow = this.handleChangeFollow.bind(this);
+        if(document.getElementById("quit") !== null) {
+            document.getElementById("quit").style.display = "inline-block";
+        }
 
-        this.getData();
+        if(sessionStorage.getItem("jwtToken") !== null) {
+
+            this.getData = this.getData.bind(this);
+            this.handleChangeLegend = this.handleChangeLegend.bind(this);
+            this.handleSubmit = this.handleSubmit.bind(this);
+            this.onDrop = this.onDrop.bind(this);
+            this.handleAddFollow = this.handleAddFollow.bind(this);
+            this.handleChangeFollow = this.handleChangeFollow.bind(this);
+
+            this.getData();
+
+        }else{
+            this.props.history.push("/");
+		}
 
     }
 
@@ -163,7 +173,7 @@ class Home extends React.Component {
 
 			  <div id="postsContainer">
 				  <h2>Flow</h2>
-				  { this.state.posts.map(post => <Post key={post} image={post.photo} idUser={post.idUser} subtitle={post.description}></Post>) }
+				  { this.state.posts.map(post => <Post key={post} image={post.photo} idUser={post.idUser} subtitle={post.description} idPost={post._id}></Post>) }
 			  </div>
 
 		  </div>

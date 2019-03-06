@@ -1,6 +1,5 @@
 
 h1{
-    color : white;
     margin-left: 3vw;
 }
 
@@ -8,4 +7,17 @@ h1{
     height: 60px;
     width : 100%;
     background-color: #222299;
+    color : white;
+}
+
+a{
+    display: inline-block;
+    color : white;
+}
+
+#quit{
+    display: none;
+    position: absolute;
+    right: 3vw;
+    top: 2vh;
 }

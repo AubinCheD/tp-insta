@@ -17,6 +17,36 @@
     padding-top: 2vh;
 }
 
+.commentsLayer form{
+    max-width: 99%;
+    padding-left: 1%;
+    margin-bottom: 0px;
+}
+
+.commentsLayer h4{
+    font-size: 1.2em;
+    font-weight: bold;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+}
+
+.commentsLayer {
+    padding-bottom: 2vh;
+}
+
+.commentsLayer p{
+    font-size: 1em;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+}
+
+.commentsLayer p, .commentsLayer h4{
+    color: #424242;
+    text-align: left;
+    padding-left: 2vw;
+    padding-right: 3vw;
+}
+
 .userLayer{
     border-bottom: 1px solid black;
 }

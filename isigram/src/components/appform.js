@@ -25,6 +25,10 @@ class AppForm extends React.Component {
 		this.handleChangeLoginEmail = this.handleChangeLoginEmail.bind(this);
 		this.handleChangeLoginPassword = this.handleChangeLoginPassword.bind(this);
 		this.handleLogin = this.handleLogin.bind(this);
+
+        if(document.getElementById("quit") !== null) {
+            document.getElementById("quit").style.display = "none";
+        }
 	
 	}	
 			
@@ -75,6 +79,7 @@ class AppForm extends React.Component {
 
 	handleLogin(event){
 
+		console.log("BAUDHUIT");
         event.preventDefault();
 
         if(this.state.loginEmail !== '' && this.state.loginPassword !== '' && this.state.loginPassword.length >=6){
